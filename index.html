@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ist die Pille schuld? | Quiz</title>
+
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body id="quiz">
+    <div id="background">
+        <div class="circle"></div>
+        <div class="triangle"></div>
+        <div class="square"></div>
+    </div>
+    <main>
+        <h1>Stell dir vor...</h1>
+        <div id="controls">
+            <span title="Zurück zur letzten Frage"><svg xmlns="http://www.w3.org/2000/svg" id="back" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M15 11l4 4l-4 4m4 -4h-11a4 4 0 0 1 0 -8h1" />
+            </svg></span>
+            <span>Frage <span id="question__num">2</span> / 12</span>
+        </div>
+        <div class="question" data-number="1">
+            <div class="question__description">
+                <p>...du bist bei deinen Freunden. Ihr wolltet eigentlich einen ganz gemütlichen Abend zusammen haben. 
+                Doch dann bietet dir der/die Gastgeber:in einen super süßen, leckeren Cocktail an. Dein Bauch sagt ja, 
+                aber dein Kopf nein, heute etwas zu trinken. Die Kombination aus Zucker und Alkohol hat dir nämlich schon einmal 
+                Kopfschmerzen beschert.</p>
+                <p class="bold">Würdest du den Cocktail trinken?</p>
+                <div  class="question__answer">
+                    <input type='range' min='1' max='4' step='1' list="options1"/>
+                    <datalist class="options" id="options1">
+                        <option value="0" label="Nein"></option>
+                        <option value="1" label="Eher nicht"></option>
+                        <option value="2" label="Vermutlich"></option>
+                        <option value="3" label="Definitiv"></option>
+                      </datalist>
+                </div>
+            </div>
+            <div class="question__image"><img src="assets/img/01_Kopfschmerzen_v01.svg" alt="Eine Person hält einen Cocktail in der Hand"/></div>
+        </div>
+        <div class="question question--active" data-number="2">
+            <div class="question__description">
+                <p>...dein:e Freund:In hat mit dir Schluss gemacht. In der Schule / Studium läuft es gerade auch nicht so gut. 
+                    Du willst einfach nur deine Ruhe. Um runterzukommen helfen dir ein oder andere Chipspackung und Schokoladentafeln. 
+                    Das geht so über mehrere Wochen. Du bemerkst nach einiger Zeit, dass die deine Lieblingshose nicht mehr passt.</p>
+                <p class="bold">Würdest du den Cocktail trinken?</p>
+                <div  class="question__answer">
+                    <input type='range' min='1' max='4' step='1' list="options2"/>
+                    <datalist class="options" id="options2">
+                        <option value="0" label="Nein"></option>
+                        <option value="1" label="Eher nicht"></option>
+                        <option value="2" label="Vermutlich"></option>
+                        <option value="3" label="Definitiv"></option>
+                      </datalist>
+                </div>
+            </div>
+            <div class="question__image"><img src="assets/img/02_Gewichtszunahme_v01.svg" alt="Essensverpackungen und Tests liegen verteilt auf einem Bett"/></div>
+        </div>
+        <div class="question" data-number="13">
+            <div class="question__description">
+                <p>...du hast alle Fragen beantwortet, yay!</p>
+                <p class="bold">Willst du wissen was all das zu bedeuten hat?</p><br><br>
+                <a href="results/" class="button">Zur Auswertung</a>
+            </div>
+            <div class="question__image"><img src="assets/img/02_Gewichtszunahme_v01.svg" alt="Essensverpackungen und Tests liegen verteilt auf einem Bett"/></div>
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="/impressum">Impressum</a></li>
+            <li><a href="/disclaimer/">Disclaimer</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
