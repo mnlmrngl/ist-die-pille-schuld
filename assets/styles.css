@@ -15,11 +15,14 @@
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
 }
+html {
+    height: 100%;
+}
 body {
     position: relative;
     background-color: rgb(219, 219, 219);
-    min-height: 100vh;
-    width: 100vw;
+    min-height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,6 +46,7 @@ label input {
 input[type="checkbox"] {
     -webkit-appearance: none;
     vertical-align: text-bottom;
+    border: none;
 }
 input[type="checkbox"]::before {
     content: "";
@@ -85,6 +89,10 @@ a:not(.button):hover, a:not(.button):focus {
     background-color: #699ae4;
     color: #fff;
     padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+.button:hover, .button:focus {
+    background-color: #517bbb;
 }
 footer {
     width: 100%;
@@ -170,7 +178,19 @@ footer li {
 #quiz .question__next {
     position: absolute;
     right: 0;
-    font-size: 0.6rem;
+    top: calc(100% + 1rem);
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+#quiz .question__next svg {
+    margin-left: 0.5rem;
+    transition: all 0.3s;
+}
+#quiz .question__next:hover svg {
+    stroke: #517bbb;
+    fill: #517bbb;
 }
 .options {
     display: flex;
@@ -408,7 +428,7 @@ input[type=range]::-ms-fill-lower {
 }
 @media (max-width: 575px) {
     #quiz main {
-        padding: 2rem 10vw 2.5rem 10vw;
+        padding: 2rem 10vw 4rem 10vw;
     }
     .no-go__item {
         width: 70%;
