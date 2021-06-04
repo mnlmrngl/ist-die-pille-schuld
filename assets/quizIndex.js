@@ -1,14 +1,13 @@
-document.getElementById("start").addEventListener("click", function () {
-    if (document.getElementById('checkboxDisclaimer').checked == true)
-        createCookie('disclaimerAccepted', 'true');
-});
 
-
-
-function createCookie(cookieName, cookieValue) {
-    document.cookie = cookieName + '=' + cookieValue + ';';
-    console.log('Cookie created: ' + document.cookie);
+function checkDisclaimerCookie() {
+    console.log('body loaded');
+    if (readCookie('disclaimerAccepted') == 'true')
+        console.log("ture")
+    else
+        console.log("false")
 }
+
+
 
 function readCookie(object) {
     var element = object + '=';
