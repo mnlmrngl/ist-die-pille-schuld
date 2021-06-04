@@ -1,4 +1,3 @@
-
 function checkDisclaimerCookie() {
     console.log('body loaded');
     if (readCookie('disclaimerAccepted') == 'true')
@@ -29,7 +28,17 @@ var activeQuestion = document.querySelector('.question.question--active');
 console.log(activeQuestion);
 
 //Next Question
-document.querySelector('.question--active .question__next').addEventListener('click', function(){
+document.querySelector('.question--active .question__next').addEventListener('click', function () {
     activeQuestion.classList.remove('question--active');
     activeQuestion.nextElementSibling.classList.add('question--active');
+    activeQuestion = activeQuestion.nextElementSibling;
+});
+
+//Prev Question
+document.getElementById('controls').firstElementChild.addEventListener('click', function () {
+    if (activeQuestion.getAttribute('data-number').charAt(0) != 1) {
+        activeQuestion.classList.remove('question--active');
+        activeQuestion.previousElementSibling.classList.add('question--active');
+        activeQuestion = activeQuestion.previousElementSibling;
+    }
 });
