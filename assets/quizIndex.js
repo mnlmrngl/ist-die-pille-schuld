@@ -25,6 +25,7 @@ function readCookie(object) {
 
 //Question
 var activeQuestion = document.querySelector('.question.question--active');
+var questionNumber = 1;
 console.log(activeQuestion);
 
 //Next Question
@@ -32,6 +33,8 @@ document.querySelector('.question--active .question__next').addEventListener('cl
     activeQuestion.classList.remove('question--active');
     activeQuestion.nextElementSibling.classList.add('question--active');
     activeQuestion = activeQuestion.nextElementSibling;
+    questionNumber++;
+    document.getElementById("question__num").textContent=questionNumber;
 });
 
 //Prev Question
@@ -40,5 +43,8 @@ document.getElementById('controls').firstElementChild.addEventListener('click', 
         activeQuestion.classList.remove('question--active');
         activeQuestion.previousElementSibling.classList.add('question--active');
         activeQuestion = activeQuestion.previousElementSibling;
+        questionNumber--;
+        document.getElementById("question__num").textContent=questionNumber;
+
     }
 });
