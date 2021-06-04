@@ -2,6 +2,7 @@
 document.getElementById("start").addEventListener("click", function () {
     if (document.getElementById('checkboxDisclaimer').checked == true)
         createCookie('disclaimerAccepted', 'true');
+        document.location='../';
 });
 
 function createCookie(cookieName, cookieValue) {

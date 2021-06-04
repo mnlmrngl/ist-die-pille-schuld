@@ -1,9 +1,10 @@
 function checkDisclaimerCookie() {
-    console.log('body loaded');
     if (readCookie('disclaimerAccepted') == 'true')
         console.log("ture")
-    else
+    else {
         console.log("false")
+        document.location = '/disclaimer';
+    }
 }
 
 function readCookie(object) {
@@ -12,7 +13,6 @@ function readCookie(object) {
 
     for (var i = 0; i < cookieArray.length; i++) {
         var cookieElement = cookieArray[i];
-
         while (cookieElement.charAt(0) === ' ') {
             cookieElement = cookieElement.substing(1);
         }
@@ -33,7 +33,7 @@ document.querySelector('.question--active .question__next').addEventListener('cl
     activeQuestion.nextElementSibling.classList.add('question--active');
     activeQuestion = activeQuestion.nextElementSibling;
     questionNumber++;
-    document.getElementById("question__num").textContent=questionNumber;
+    document.getElementById("question__num").textContent = questionNumber;
 });
 
 //Prev Question
@@ -43,6 +43,6 @@ document.getElementById('controls').firstElementChild.addEventListener('click', 
         activeQuestion.previousElementSibling.classList.add('question--active');
         activeQuestion = activeQuestion.previousElementSibling;
         questionNumber--;
-        document.getElementById("question__num").textContent=questionNumber;
+        document.getElementById("question__num").textContent = questionNumber;
     }
 });
