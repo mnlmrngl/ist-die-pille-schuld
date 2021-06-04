@@ -7,8 +7,6 @@ function checkDisclaimerCookie() {
         console.log("false")
 }
 
-
-
 function readCookie(object) {
     var element = object + '=';
     var cookieArray = document.cookie.split(';');
@@ -24,3 +22,14 @@ function readCookie(object) {
         }
     }
 }
+
+
+//Question
+var activeQuestion = document.querySelector('.question.question--active');
+console.log(activeQuestion);
+
+//Next Question
+document.querySelector('.question--active .question__next').addEventListener('click', function(){
+    activeQuestion.classList.remove('question--active');
+    activeQuestion.nextElementSibling.classList.add('question--active');
+});
