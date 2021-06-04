@@ -25,8 +25,7 @@ function readCookie(object) {
 
 //Question
 var activeQuestion = document.querySelector('.question.question--active');
-var questionNumber = 1;
-console.log(activeQuestion);
+var questionNumber = activeQuestion.dataset.number;
 
 //Next Question
 document.querySelector('.question--active .question__next').addEventListener('click', function () {
@@ -45,6 +44,5 @@ document.getElementById('controls').firstElementChild.addEventListener('click', 
         activeQuestion = activeQuestion.previousElementSibling;
         questionNumber--;
         document.getElementById("question__num").textContent=questionNumber;
-
     }
 });
