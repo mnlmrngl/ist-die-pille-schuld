@@ -1,8 +1,9 @@
 // Create Disclaimer Cookie if disclaiber is cecked
 document.getElementById("start").addEventListener("click", function () {
-    if (document.getElementById('checkboxDisclaimer').checked == true)
+    if (document.getElementById('checkboxDisclaimer').checked == true) {
         createCookie('disclaimerAccepted', 'true');
-        document.location='../';
+        document.location = '../';
+    }
 });
 
 function createCookie(cookieName, cookieValue) {

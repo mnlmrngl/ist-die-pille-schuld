@@ -42,6 +42,7 @@ document.querySelector('.question__next').addEventListener('click', function () 
         activeQuestionNumber = activeQuestion.dataset.number;
         document.getElementById("question__num").textContent = activeQuestionNumber;
         console.log('New Active Question Number ' + activeQuestionNumber);
+
     }
 });
 
