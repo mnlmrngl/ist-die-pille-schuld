@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,8 @@
 
     <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body id="quiz" onload="checkDisclaimerCookie()">
+
+<body id="quiz">
     <div id="background">
         <div class="circle"></div>
         <div class="triangle"></div>
@@ -17,21 +19,25 @@
     <main>
         <h1>Stell dir vor...</h1>
         <div id="controls">
-            <span data-last="1" title="Zurück zur letzten Frage"><svg xmlns="http://www.w3.org/2000/svg" id="back" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M15 11l4 4l-4 4m4 -4h-11a4 4 0 0 1 0 -8h1" />
-            </svg></span>
+            <span data-last="1" title="Zurück zur letzten Frage"><svg xmlns="http://www.w3.org/2000/svg" id="back"
+                    width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M15 11l4 4l-4 4m4 -4h-11a4 4 0 0 1 0 -8h1" />
+                </svg></span>
             <span>Frage <span id="question__num">1</span> / 12</span>
         </div>
         <div class="question question--active" data-number="1">
             <div class="question__description">
-                <p>...du bist bei deinen Freunden. Ihr wolltet eigentlich einen ganz gemütlichen Abend zusammen haben. 
-                Doch dann bietet dir der/die Gastgeber:in einen super süßen, leckeren Cocktail an. Dein Bauch sagt ja, 
-                aber dein Kopf nein, heute etwas zu trinken. Die Kombination aus Zucker und Alkohol hat dir nämlich schon einmal 
-                Kopfschmerzen beschert.</p>
+                <p>...du bist bei deinen Freunden. Ihr wolltet eigentlich einen ganz gemütlichen Abend zusammen haben.
+                    Doch dann bietet dir der/die Gastgeber:in einen super süßen, leckeren Cocktail an. Dein Bauch sagt
+                    ja,
+                    aber dein Kopf nein, heute etwas zu trinken. Die Kombination aus Zucker und Alkohol hat dir nämlich
+                    schon einmal
+                    Kopfschmerzen beschert.</p>
                 <p class="bold">Würdest du den Cocktail trinken?</p>
-                <div  class="question__answer">
-                    <input type='range' min='1' max='4' step='1' list="options1"/>
+                <div class="question__answer">
+                    <input type='range' min='1' max='4' step='1' list="options1" />
                     <ul class="options">
                         <li>Nein</li>
                         <li>Eher nicht</li>
@@ -39,23 +45,30 @@
                         <li>Definitiv</li>
                     </ul>
                     <span class="question__next" data-next="2"> Zur nächsten Frage
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#699ae4" fill="#699ae4" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="#699ae4" fill="#699ae4" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" />
                         </svg>
                     </span>
                 </div>
             </div>
-            <div class="question__image"><img src="assets/img/01_Kopfschmerzen_v01.svg" alt="Eine Person hält einen Cocktail in der Hand"/></div>
+            <div class="question__image"><img src="assets/img/01_Kopfschmerzen_v01.svg"
+                    alt="Eine Person hält einen Cocktail in der Hand" /></div>
         </div>
         <div class="question" data-number="2">
             <div class="question__description">
-                <p>...dein:e Freund:In hat mit dir Schluss gemacht. In der Schule / Studium läuft es gerade auch nicht so gut. 
-                    Du willst einfach nur deine Ruhe. Um runterzukommen helfen dir ein oder andere Chipspackung und Schokoladentafeln. 
-                    Das geht so über mehrere Wochen. Du bemerkst nach einiger Zeit, dass die deine Lieblingshose nicht mehr passt.</p>
+                <p>...dein:e Freund:In hat mit dir Schluss gemacht. In der Schule / Studium läuft es gerade auch nicht
+                    so gut.
+                    Du willst einfach nur deine Ruhe. Um runterzukommen helfen dir ein oder andere Chipspackung und
+                    Schokoladentafeln.
+                    Das geht so über mehrere Wochen. Du bemerkst nach einiger Zeit, dass die deine Lieblingshose nicht
+                    mehr passt.</p>
                 <p class="bold">Würdest du den Cocktail trinken?</p>
-                <div  class="question__answer">
-                    <input type='range' min='1' max='4' step='1'/>
+                <div class="question__answer">
+                    <input type='range' min='1' max='4' step='1' />
                     <ul class="options">
                         <li>Nein</li>
                         <li>Eher nicht</li>
@@ -63,14 +76,44 @@
                         <li>Definitiv</li>
                     </ul>
                     <span class="question__next" data-next="3"> Zur nächsten Frage
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#699ae4" fill="#699ae4" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="#699ae4" fill="red" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" />
                         </svg>
                     </span>
                 </div>
             </div>
-            <div class="question__image"><img src="assets/img/02_Gewichtszunahme_v01.svg" alt="Essensverpackungen und Tests liegen verteilt auf einem Bett"/></div>
+            <div class="question__image"><img src="assets/img/02_Gewichtszunahme_v01.svg"
+                    alt="Essensverpackungen und Tests liegen verteilt auf einem Bett" /></div>
+        </div>
+        <div class="question" data-number="3">
+            <div class="question__description">
+                <p>.fsdadsads nach einiger Zeit, dass die deine Lieblingshose nicht mehr passt.</p>
+                <p class="bold">Würdest du den Cocktail trinken?</p>
+                <div class="question__answer">
+                    <input type='range' min='1' max='4' step='1' />
+                    <ul class="options">
+                        <li>Nein</li>
+                        <li>Eher nicht</li>
+                        <li>Vermutlich</li>
+                        <li>Definitiv</li>
+                    </ul>
+                    <span class="question__next" data-next="3"> Zur nächsten Frage
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="#699ae4" fill="#699ae4" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="question__image"><img src="assets/img/02_Gewichtszunahme_v01.svg"
+                    alt="Essensverpackungen und Tests liegen verteilt auf einem Bett" /></div>
         </div>
         <div class="question" data-number="13">
             <div class="question__description">
@@ -78,11 +121,13 @@
                 <p class="bold">Willst du wissen was all das zu bedeuten hat?</p><br><br>
                 <a href="results/" class="button">Zur Auswertung</a>
             </div>
-            <div class="question__image"><img src="assets/img/02_Gewichtszunahme_v01.svg" alt="Essensverpackungen und Tests liegen verteilt auf einem Bett"/></div>
+            <div class="question__image"><img src="assets/img/02_Gewichtszunahme_v01.svg"
+                    alt="Essensverpackungen und Tests liegen verteilt auf einem Bett" /></div>
         </div>
     </main>
     <footer>
         <ul>
+            <li id=getNetxButton>Get NExt Button</li>
             <li><a href="impressum">Impressum</a></li>
             <li><a href="disclaimer">Disclaimer</a></li>
         </ul>
