@@ -12,7 +12,7 @@ function readCookie(object) {
     for (var i = 0; i < cookieArray.length; i++) {
         var cookieElement = cookieArray[i];
         while (cookieElement.charAt(0) === ' ') {
-            cookieElement = cookieElement.substing(1);
+            cookieElement = cookieElement.substring(1);
         }
         if (cookieElement.indexOf(element) === 0) {
             return cookieElement.substring(element.length, cookieElement.length);
@@ -57,29 +57,56 @@ console.log(activeQuestion);
 var activeQuestionNumber = activeQuestion.dataset.number;
 console.log(activeQuestionNumber);
 
-var activeQuestionButtonNext = activeQuestion.firstElementChild.lastElementChild.lastElementChild;
+var activeQuestionButtonNext = document.querySelector('.question__next');
 
 //Next Question
-activeQuestionButtonNext.addEventListener('click', function () {
-    activeQuestion.classList.remove('question--active');
-    //new Active Question
-    activeQuestionNumber++;
-    console.log('New Active Question Number ' + activeQuestionNumber);
+document.querySelector('.question__next').addEventListener('click', function () {
+    if (activeQuestion.dataset.number <= 12) {
+        activeQuestion.classList.remove('question--active');
 
-    activeQuestion = activeQuestion.nextElementSibling;
-    activeQuestion.classList.add('question--active');
-    console.log('New Active Question ')
-    console.log(activeQuestion);
+        //new Active Question
 
-    activeQuestionButtonNext = activeQuestion.firstElementChild.lastElementChild.lastElementChild
-    console.log('Next Button')
-    console.log(activeQuestionButtonNext); //lastChild.lastChild;
+        activeQuestion = activeQuestion.nextElementSibling;
+        activeQuestion.classList.add('question--active');
+        console.log('New Active Question ')
+        console.log(activeQuestion);
 
+        activeQuestionNumber = activeQuestion.dataset.number;
+        console.log('New Active Question Number ' + activeQuestionNumber);
+    }
 });
 
-document.getElementById('getNetxButton').addEventListener('click', function () {
-    console.log(activeQuestionButtonNext)
-})
+//Prev Question
+document.getElementById('back').addEventListener('click', function () {
+    if (activeQuestion.dataset.number != 1) {
+        activeQuestion.classList.remove('question--active');
+
+        activeQuestion = activeQuestion.previousElementSibling;
+        activeQuestion.classList.add('question--active');
+        console.log('New Active Question ')
+        console.log(activeQuestion);
+
+        activeQuestionNumber = activeQuestion.dataset.number;
+        console.log('New Active Question Number ' + activeQuestionNumber);
+    }
+});
+
+function createCookie(cookieName, cookieValue) {
+    document.cookie = cookieName + '=' + cookieValue + '; path=/;';
+    console.log('Cookie created: ' + document.cookie);
+}
+
+//Cookies mit Lösungen setzen
+document.getElementById('getSolution').addEventListener('click', function () {
+    var inputValues = document.querySelectorAll('input[type="range"]');
+    console.log(inputValues)
+    console.log(inputValues[0].value)
+
+    for (let i = 0; i < inputValues.length; i++) {
+        createCookie('a' + (i + 1), inputValues[i].value);
+    }
+    document.location = '../results';
+});
 
 //******************************************************************************************* */
 
