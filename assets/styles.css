@@ -20,7 +20,7 @@ html {
 }
 body {
     position: relative;
-    background-color: rgb(219, 219, 219);
+    background-color: rgb(240, 240, 240);
     min-height: 100%;
     width: 100%;
     display: flex;
@@ -58,7 +58,7 @@ input[type="checkbox"]::before {
     transition: all 0.3s;
 }
 input[type="checkbox"]:checked::before {
-    box-shadow: inset 0px 0px 0px 3px rgb(219, 219, 219);
+    box-shadow: inset 0px 0px 0px 3px rgb(240, 240, 240);
     background-color: #699ae4;
     border-color: #699ae4;
 }
@@ -90,9 +90,14 @@ a:not(.button):hover, a:not(.button):focus {
     color: #fff;
     padding: 10px 15px;
     transition: background-color 0.3s;
+    cursor: pointer;
 }
 .button:hover, .button:focus {
     background-color: #517bbb;
+}
+.button--disabled {
+    pointer-events: none;
+    background-color: rgb(170, 170, 170);
 }
 footer {
     width: 100%;
@@ -116,8 +121,8 @@ footer li {
     max-width: 750px;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 5px 5px 11px rgb(189, 189, 189), -5px -5px 11px rgb(241, 241, 241);
-    background-color: rgb(219, 219, 219);
+    box-shadow: 5px 5px 11px rgb(189, 189, 189), -5px -5px 11px rgb(251, 251, 251);
+    background-color: rgb(240, 240, 240);
     margin: 2rem 0 3rem 0;
 }
 #start {
@@ -141,6 +146,7 @@ footer li {
     max-width: 1000px;
     box-sizing: content-box;
     margin: 0 auto;
+    position: relative;
 }
 #quiz h1 {
     font-size: 3.5rem;
@@ -156,6 +162,7 @@ footer li {
 #quiz .question__image {
     width: 45%;
     max-height: 300px;
+    padding: 0 20px;
 }
 #quiz .question__description {
     width: 55%;
@@ -177,12 +184,13 @@ footer li {
 }
 #quiz .question__next {
     position: absolute;
-    right: 0;
-    top: calc(100% + 1rem);
+    right: calc(45% + 35px);
+    bottom: calc(5rem - 50px);
     font-size: 0.7rem;
     display: flex;
     align-items: center;
     cursor: pointer;
+    z-index: 3;
 }
 #quiz .question__next svg {
     margin-left: 0.5rem;
@@ -326,6 +334,36 @@ input[type=range]::-ms-fill-lower {
     font-size: 1.2rem;
 }
 
+.dark {
+    background-color: rgb(20, 20, 20);
+    color: rgb(240, 240, 240);
+}
+.dark#disclaimer main {
+    background-color: rgb(20, 20, 20);
+    box-shadow: 5px 5px 11px rgb(0, 0, 0), -5px -5px 11px rgb(50, 50, 50);
+}
+.dark #result span {
+    color: rgb(20, 20, 20);
+}
+.dark footer a {
+    color: rgb(240, 240, 240);
+}
+.dark input[type="checkbox"]:checked::before {
+    box-shadow: inset 0px 0px 0px 3px rgb(20, 20, 20);
+}
+.dark .button {
+    color: rgb(20, 20, 20);
+}
+.dark .circle {
+    background-color: rgba(255, 179, 149, 0.2);
+}
+.dark .square {
+    background-color: rgba(231, 181, 231, 0.2);
+}
+.dark .triangle {
+    border-top: 35vw solid rgba(174, 201, 178, 0.2);
+}
+
 @media (max-width: 1400px) {
     #quiz h1 {
         font-size: 2.5rem;
@@ -335,7 +373,6 @@ input[type=range]::-ms-fill-lower {
         margin-bottom: 1rem;
     }
     #quiz .question__description {
-        width: 55%;
         line-height: 1.5;
         font-size: 1rem;
     }
@@ -355,8 +392,8 @@ input[type=range]::-ms-fill-lower {
         width: 35%;
     }
     #quiz .question__description {
-        width: 65%;
         line-height: 1.4;
+        width: 100%;
     }
     #quiz .question__image {
         width: 40%;
@@ -366,8 +403,8 @@ input[type=range]::-ms-fill-lower {
         top: 1rem;
         right: 1rem;
     }
-    #quiz .question__description {
-        width: 100%;
+    #quiz .question__next {
+        right: 10vw;
     }
     #quiz .question {
         flex-flow: column wrap;
@@ -415,7 +452,7 @@ input[type=range]::-ms-fill-lower {
         top: 30%;
         right: -30%;
     }
-    .triangle {
+    .triangle, .dark .triangle {
         border-left: 150px solid transparent;
         border-right: 150px solid transparent;
         border-top: 220px solid rgba(174, 201, 178, 0.5);
@@ -435,5 +472,9 @@ input[type=range]::-ms-fill-lower {
     }
     .no-go__item:nth-of-type(2) {
         margin: 0 0 2rem 30%;
+    }
+    #quiz .question__next {
+        position: absolute;
+        bottom: calc(4rem - 50px);
     }
 }
