@@ -69,5 +69,5 @@ document.getElementById('getSolution').addEventListener('click', function () {
             createCookie('a' + (i + 1), inputValues[i].value);
     }
 
-    // document.location = '../results';
+    document.location = '../results';
 });

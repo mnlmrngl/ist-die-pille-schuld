@@ -10,19 +10,34 @@ for (var i = 0; i < cookieArray.length; i++) {
         cookieElement = cookieElement.substring(1);
     }
     if (cookieElement.indexOf('disclaimerAccepted') == -1) {
-        var start = 'a' + i + '=';
+        if (i < 10) {
+            var start = 'a0' + i + '=';
+        } else
+            var start = 'a' + i + '=';
         solution.push(cookieElement.substring(start.length, cookieElement.length))
     }
 }
 console.log('Solution ' + solution)
 
+//calc risk
+var sum = 0;
+for (let i = 0; i < solution.length; i++) {
+    sum += parseInt(solution[i]);
+}
+console.log('sum '+ sum)
+var risk = Math.round(sum/48*100);
+document.getElementById('percentage').innerHTML = risk+'%';
+
+console.log(risk)
+
+
 //stores question numers of no-goes
 var noGoes = [];
 for (let i = 0; i < solution.length; i++) {
-    if (solution[i] == 4) {
+    if (solution[i] == 3) {
 
         if (i + 1 < 10) {
-            noGoes.push('1'+(i + 1));
+            noGoes.push('0' + (i + 1));
         } else
             noGoes.push(i + 1);
     }
