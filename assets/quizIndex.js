@@ -6,6 +6,7 @@ else {
     document.location = '/disclaimer';
 }
 
+
 function readCookie(object) {
     var element = object + '=';
     var cookieArray = document.cookie.split(';');
@@ -26,12 +27,36 @@ var activeQuestion;
 var activeQuestionNumber;
 //Check if user has paused quiz by reading disclaimer
 if (readCookie('currentQuestion') == null) {
-    console.log('hier<')
+    //new start
     activeQuestion = document.querySelector("[data-number='1']");
     activeQuestionNumber = activeQuestion.dataset.number;
 } else {
+    //continue from disclaimer
     activeQuestionNumber = readCookie('currentQuestion');
-    activeQuestion = document.querySelector("[data-number='"+activeQuestionNumber+"'");
+    activeQuestion = document.querySelector("[data-number='" + activeQuestionNumber + "'");
+
+    //set answers
+    var solution = [];
+    var cookieArray = document.cookie.split(';').sort();
+
+    for (var i = 0; i < cookieArray.length; i++) {
+        var cookieElement = cookieArray[i];
+
+        while (cookieElement.charAt(0) === ' ') {
+            cookieElement = cookieElement.substring(1);
+        }
+        if (cookieElement.indexOf('disclaimerAccepted') == -1 && cookieElement.indexOf('currentQuestion') == -1 ) {
+            if (i < 10) {
+                var start = 'a0' + i + '=';
+            } else
+                var start = 'a' + i + '=';
+            solution.push(cookieElement.substring(start.length, cookieElement.length))
+        }
+    }
+    var inputSliders = document.querySelectorAll("input[type='range']");
+    for (let i = 0; i < inputSliders.length; i++) {
+        inputSliders[i].value = solution[i];
+    }
 }
 
 activeQuestion.classList.add('question--active')
@@ -72,6 +97,11 @@ function createCookie(cookieName, cookieValue) {
 
 //Cookies mit Lösungen setzen
 document.getElementById('getSolution').addEventListener('click', function () {
+    setResultCookies();
+    document.location = '../results';
+});
+
+function setResultCookies() {
     var inputValues = document.querySelectorAll('input[type="range"]');
     console.log(inputValues)
 
@@ -81,12 +111,11 @@ document.getElementById('getSolution').addEventListener('click', function () {
         } else
             createCookie('a' + (i + 1), inputValues[i].value);
     }
-
-    document.location = '../results';
-});
+}
 
 //Go to Disclaimer
 var disclaimer = document.getElementById('disclaimer')
 disclaimer.addEventListener('click', function () {
     createCookie('currentQuestion', activeQuestionNumber);
+    setResultCookies();
 })

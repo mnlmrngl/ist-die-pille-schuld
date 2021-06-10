@@ -9,7 +9,7 @@ for (var i = 0; i < cookieArray.length; i++) {
     while (cookieElement.charAt(0) === ' ') {
         cookieElement = cookieElement.substring(1);
     }
-    if (cookieElement.indexOf('disclaimerAccepted') == -1) {
+    if (cookieElement.indexOf('disclaimerAccepted') == -1 && cookieElement.indexOf('currentQuestion') == -1) {
         if (i < 10) {
             var start = 'a0' + i + '=';
         } else

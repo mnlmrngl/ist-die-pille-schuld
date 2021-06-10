@@ -24,7 +24,7 @@ start.addEventListener("click", function () {
 
 
 
-//diclaimer from Quiz
+//disclaimer from Quiz
 if (readCookie('disclaimerAccepted') == 'true') {
     var continueBtn = document.getElementById('continue');
     //remove old stuff
