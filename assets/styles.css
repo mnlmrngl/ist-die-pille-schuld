@@ -96,8 +96,12 @@ a:not(.button):hover, a:not(.button):focus {
     background-color: #517bbb;
 }
 .button--disabled {
-    pointer-events: none;
+    /* pointer-events: none; */
     background-color: rgb(170, 170, 170);
+}
+.button--disabled:hover, .button--disabled:focus{
+    background-color: rgb(170, 170, 170);
+    cursor: default;
 }
 footer {
     width: 100%;

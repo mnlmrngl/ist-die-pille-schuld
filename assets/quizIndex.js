@@ -1,3 +1,4 @@
+//Check if disclaimer is accepted
 if (readCookie('disclaimerAccepted') == 'true')
     console.log("true")
 else {
@@ -20,9 +21,20 @@ function readCookie(object) {
     }
 }
 
-var activeQuestion = document.querySelector('.question--active');
-var activeQuestionNumber = activeQuestion.dataset.number;
 
+var activeQuestion;
+var activeQuestionNumber;
+//Check if user has paused quiz by reading disclaimer
+if (readCookie('currentQuestion') == null) {
+    activeQuestion = document.querySelector('.question--active');
+    activeQuestionNumber = activeQuestion.dataset.number;
+} else {
+    activeQuestionNumber = readCookie('currentQuestion');
+    activeQuestion = document.querySelector("[data-number='"+activeQuestionNumber+"'");
+}
+
+activeQuestion.classList.add('question--active')
+document.getElementById("question__num").textContent = activeQuestionNumber;
 var activeQuestionButtonNext = document.querySelector('.question__next');
 
 //Next Question
@@ -71,3 +83,9 @@ document.getElementById('getSolution').addEventListener('click', function () {
 
     document.location = '../results';
 });
+
+//Go to Disclaimer
+var disclaimer = document.getElementById('disclaimer')
+disclaimer.addEventListener('click', function () {
+    createCookie('currentQuestion', activeQuestionNumber);
+})
