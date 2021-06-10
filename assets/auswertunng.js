@@ -83,10 +83,9 @@ for (let i = 0; i < noGoes.length; i++) {
 }
 
 //Go to Disclaimer
-var disclaimer = document.getElementById('disclaimer')
+var disclaimer = document.getElementById('disclaimerBtn')
 disclaimer.addEventListener('click', function () {
     createCookie('currentQuestion', 'result');
-    document.location='/disclaimer'
 })
 
 
