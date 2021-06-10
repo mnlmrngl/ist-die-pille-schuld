@@ -20,11 +20,15 @@ console.log('Solution ' + solution)
 var noGoes = [];
 for (let i = 0; i < solution.length; i++) {
     if (solution[i] == 4) {
-        noGoes.push(i + 1);
+
+        if (i + 1 < 10) {
+            noGoes.push('1'+(i + 1));
+        } else
+            noGoes.push(i + 1);
     }
 }
 
-console.log('NoGoes ' + noGoes)
+console.log('NoGoes ' + noGoes.length)
 
 
 //Show No Goes

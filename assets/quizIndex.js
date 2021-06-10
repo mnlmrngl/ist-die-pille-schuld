@@ -21,9 +21,7 @@ function readCookie(object) {
 }
 
 var activeQuestion = document.querySelector('.question--active');
-console.log(activeQuestion);
 var activeQuestionNumber = activeQuestion.dataset.number;
-console.log(activeQuestionNumber);
 
 var activeQuestionButtonNext = document.querySelector('.question__next');
 
@@ -36,13 +34,9 @@ document.querySelector('.question__next').addEventListener('click', function () 
 
         activeQuestion = activeQuestion.nextElementSibling;
         activeQuestion.classList.add('question--active');
-        console.log('New Active Question ')
-        console.log(activeQuestion);
 
         activeQuestionNumber = activeQuestion.dataset.number;
         document.getElementById("question__num").textContent = activeQuestionNumber;
-        console.log('New Active Question Number ' + activeQuestionNumber);
-
     }
 });
 
@@ -53,29 +47,27 @@ document.getElementById('back').addEventListener('click', function () {
 
         activeQuestion = activeQuestion.previousElementSibling;
         activeQuestion.classList.add('question--active');
-        console.log('New Active Question ')
-        console.log(activeQuestion);
 
         activeQuestionNumber = activeQuestion.dataset.number;
         document.getElementById("question__num").textContent = activeQuestionNumber;
-
-        console.log('New Active Question Number ' + activeQuestionNumber);
     }
 });
 
 function createCookie(cookieName, cookieValue) {
     document.cookie = cookieName + '=' + cookieValue + '; path=/;';
-    console.log('Cookie created: ' + document.cookie);
 }
 
 //Cookies mit Lösungen setzen
 document.getElementById('getSolution').addEventListener('click', function () {
     var inputValues = document.querySelectorAll('input[type="range"]');
     console.log(inputValues)
-    console.log(inputValues[0].value)
 
     for (let i = 0; i < inputValues.length; i++) {
-        createCookie('a' + (i + 1), inputValues[i].value);
+        if (i < 9) {
+            createCookie('a0' + (i + 1), inputValues[i].value);
+        } else
+            createCookie('a' + (i + 1), inputValues[i].value);
     }
-    document.location = '../results';
+
+    // document.location = '../results';
 });
