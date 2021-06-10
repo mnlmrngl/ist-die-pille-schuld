@@ -25,7 +25,7 @@ start.addEventListener("click", function () {
 
 
 //diclaimer from Quiz
-if(readCookie('disclaimerAccepted') == 'true'){
+if (readCookie('disclaimerAccepted') == 'true') {
     var continueBtn = document.getElementById('continue');
     //remove old stuff
     start.style.display = 'none';
@@ -33,8 +33,12 @@ if(readCookie('disclaimerAccepted') == 'true'){
     //shoe new stuff
     document.getElementById('leave').style.display = 'block';
     continueBtn.style.display = 'block';
-    continueBtn.addEventListener('click', function(){
-        document.location = '../';
+
+    continueBtn.addEventListener('click', function () {
+        if (readCookie('currentQuestion') == 'result')
+            document.location = '../results';
+        else
+            document.location = '../'
     });
 }
 

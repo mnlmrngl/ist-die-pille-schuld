@@ -26,7 +26,8 @@ var activeQuestion;
 var activeQuestionNumber;
 //Check if user has paused quiz by reading disclaimer
 if (readCookie('currentQuestion') == null) {
-    activeQuestion = document.querySelector('.question--active');
+    console.log('hier<')
+    activeQuestion = document.querySelector("[data-number='1']");
     activeQuestionNumber = activeQuestion.dataset.number;
 } else {
     activeQuestionNumber = readCookie('currentQuestion');

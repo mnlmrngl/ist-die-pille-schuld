@@ -34,7 +34,7 @@ console.log(risk)
 //stores question numers of no-goes
 var noGoes = [];
 for (let i = 0; i < solution.length; i++) {
-    if (solution[i] == 3) {
+    if (solution[i] == 4) {
 
         if (i + 1 < 10) {
             noGoes.push('0' + (i + 1));
@@ -80,4 +80,16 @@ for (let i = 0; i < noGoes.length; i++) {
     } else if (noGoes[i] == 12)
         span.setAttribute('data-sideeffect', 'Thrombose')
 
+}
+
+//Go to Disclaimer
+var disclaimer = document.getElementById('disclaimer')
+disclaimer.addEventListener('click', function () {
+    createCookie('currentQuestion', 'result');
+    document.location='/disclaimer'
+})
+
+
+function createCookie(cookieName, cookieValue) {
+    document.cookie = cookieName + '=' + cookieValue + '; path=/;';
 }
