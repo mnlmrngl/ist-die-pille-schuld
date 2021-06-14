@@ -1,8 +1,10 @@
 //stores solution in order
+if (readCookie('disclaimerAccepted') != 'true') {
+    goToDisclaimer();
+}
+
 var solution = [];
-
 var cookieArray = document.cookie.split(';').sort();
-
 for (var i = 0; i < cookieArray.length; i++) {
     var cookieElement = cookieArray[i];
 
@@ -17,34 +19,24 @@ for (var i = 0; i < cookieArray.length; i++) {
         solution.push(cookieElement.substring(start.length, cookieElement.length))
     }
 }
-console.log('Solution ' + solution)
-
 //calc risk
 var sum = 0;
 for (let i = 0; i < solution.length; i++) {
     sum += parseInt(solution[i]);
 }
-console.log('sum '+ sum)
 var risk = Math.round(sum/48*100);
 document.getElementById('percentage').innerHTML = risk+'%';
-
-console.log(risk)
-
 
 //stores question numers of no-goes
 var noGoes = [];
 for (let i = 0; i < solution.length; i++) {
     if (solution[i] == 4) {
-
         if (i + 1 < 10) {
             noGoes.push('0' + (i + 1));
         } else
             noGoes.push(i + 1);
     }
 }
-
-console.log('NoGoes ' + noGoes.length)
-
 
 //Show No Goes
 for (let i = 0; i < noGoes.length; i++) {
@@ -85,6 +77,11 @@ for (let i = 0; i < noGoes.length; i++) {
 //Go to Disclaimer
 var disclaimer = document.getElementById('disclaimerBtn')
 disclaimer.addEventListener('click', function () {
-    createCookie('currentQuestion', 'result');
+    goToDisclaimer();
 })
+
+function goToDisclaimer(){
+    createCookie('currentQuestion', 'result');
+    document.location = '/disclaimer'
+}
 
