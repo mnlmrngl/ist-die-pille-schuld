@@ -14,10 +14,9 @@ if (readCookie('currentQuestion') == null) {
     activeQuestion = document.querySelector("[data-number='1']");
     activeQuestionNumber = activeQuestion.dataset.number;
 } else if (readCookie('currentQuestion') == 'result') {
-    document.location = '../results'
+    document.location = '/results'
 } else {
     //continue from disclaimer
-    console.log('continue from disclaimer')
     activeQuestionNumber = readCookie('currentQuestion');
     activeQuestion = document.querySelector("[data-number='" + activeQuestionNumber + "'");
 
@@ -69,6 +68,9 @@ nextBtn.addEventListener('click', function () {
             backBtn.style.display = 'flex'
             if (activeQuestionNumber == 13)
                 nextBtn.style.display = 'none';
+            if (activeQuestionNumber == 13) {
+                document.getElementById('controls').style.display = 'none'
+            }
         }
 
     }
@@ -86,13 +88,11 @@ document.getElementById('back').addEventListener('click', function () {
         activeQuestionNumber = activeQuestion.dataset.number;
         document.getElementById("question__num").textContent = activeQuestionNumber;
     }
-
-    if (activeQuestionNumber < 13) {
+    if (activeQuestionNumber < 12) {
         nextBtn.style.display = 'flex'
         if (activeQuestionNumber == 1)
             backBtn.style.display = 'none';
     }
-
 });
 
 if (activeQuestionNumber == 1)
@@ -100,12 +100,10 @@ if (activeQuestionNumber == 1)
 else if (activeQuestionNumber == 13)
     nextBtn.style.display == 'none'
 
-
-
 //Cookies mit Lösungen setzen
 document.getElementById('getSolution').addEventListener('click', function () {
     setResultCookies();
-    document.location = '../results';
+    document.location = '/results';
 });
 
 //Go to Disclaimer
