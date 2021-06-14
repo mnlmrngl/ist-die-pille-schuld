@@ -1,6 +1,7 @@
 var checkbox = document.getElementById('checkboxDisclaimer')
 var start = document.getElementById('start');
 
+//Start
 checkbox.addEventListener('click', function () {
     start.classList.toggle('button--disabled')
     if (checkbox.checked == true) {
@@ -9,8 +10,6 @@ checkbox.addEventListener('click', function () {
         console.log(false);
     }
 });
-
-
 start.addEventListener("click", function () {
     if (document.getElementById('checkboxDisclaimer').checked == true) {
         createCookie('disclaimerAccepted', 'true');
@@ -30,7 +29,7 @@ if (readCookie('disclaimerAccepted') == 'true') {
     //remove old stuff
     start.style.display = 'none';
     document.querySelector('label').style.display = 'none'
-    //shoe new stuff
+    //show new stuff
     document.getElementById('leave').style.display = 'inline-block';
     continueBtn.style.display = 'inline-block';
 

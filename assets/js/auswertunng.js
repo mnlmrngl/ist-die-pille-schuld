@@ -52,7 +52,7 @@ for (let i = 0; i < noGoes.length; i++) {
     var img = document.createElement('img');
     span.classList.add('no-go__item');
     span.appendChild(img);
-    document.getElementById('no-go').appendChild(span);
+    document.getElementById('no-go_element').appendChild(span);
     img.setAttribute('src', '../assets/img/sideeffect_' + noGoes[i] + '.svg');
 
     if (noGoes[i] == 1) {
@@ -74,7 +74,7 @@ for (let i = 0; i < noGoes.length; i++) {
     } else if (noGoes[i] == 9) {
         span.setAttribute('data-sideeffect', 'Wassereinlagerungen')
     } else if (noGoes[i] == 10) {
-        span.setAttribute('data-sideeffect', 'Treockene Augen/Kontaktlinsen')
+        span.setAttribute('data-sideeffect', 'Trockene Augen')
     } else if (noGoes[i] == 11) {
         span.setAttribute('data-sideeffect', 'Schlafstörungen')
     } else if (noGoes[i] == 12)
