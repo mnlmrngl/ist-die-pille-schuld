@@ -30,8 +30,11 @@ if (readCookie('currentQuestion') == null) {
     //new start
     activeQuestion = document.querySelector("[data-number='1']");
     activeQuestionNumber = activeQuestion.dataset.number;
+}else if(readCookie('currentQuestion') == 'result'){
+    document.location = '../results'
 } else {
     //continue from disclaimer
+    console.log('continue from disclaimer')
     activeQuestionNumber = readCookie('currentQuestion');
     activeQuestion = document.querySelector("[data-number='" + activeQuestionNumber + "'");
 
