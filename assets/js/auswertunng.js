@@ -88,7 +88,3 @@ disclaimer.addEventListener('click', function () {
     createCookie('currentQuestion', 'result');
 })
 
-
-function createCookie(cookieName, cookieValue) {
-    document.cookie = cookieName + '=' + cookieValue + '; path=/;';
-}
