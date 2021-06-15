@@ -91,6 +91,7 @@ a:not(.button):hover, a:not(.button):focus {
     padding: 10px 15px;
     transition: background-color 0.3s;
     cursor: pointer;
+    display: inline-block;
 }
 .button:hover, .button:focus {
     background-color: #517bbb;
@@ -272,7 +273,7 @@ input[type=range]::-ms-fill-lower {
 #result {
     line-height: 1.6;
 }
-#result span {
+#result span, .highlight {
     font-weight: 600;
     background: #699ae4;
     color: #fff;
@@ -302,11 +303,15 @@ input[type=range]::-ms-fill-lower {
     font-size: 0.8rem;
     color: #fff;
 }
+.sideeffects {
+    max-height: initial;
+    margin: 1rem 0;
+}
 .sideeffect {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 .sideeffect__img {
     width: 35%;
@@ -314,6 +319,17 @@ input[type=range]::-ms-fill-lower {
 }
 .sideeffect__desc {
     width: 65%;
+}
+.sideeffect__desc p {
+    display: flex;
+    flex-direction: row;
+}
+.sideeffect__desc p:first-child {
+    font-weight: 600;
+}
+.title {
+    width: 150px;
+    min-width: 150px;
 }
 
 #background {
@@ -370,7 +386,7 @@ input[type=range]::-ms-fill-lower {
     background-color: rgb(20, 20, 20);
     box-shadow: 5px 5px 11px rgb(0, 0, 0), -5px -5px 11px rgb(50, 50, 50);
 }
-.dark #result span {
+.dark #result span, .dark .highlight {
     color: rgb(20, 20, 20);
 }
 .dark footer a {
