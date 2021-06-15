@@ -25,13 +25,11 @@ console.log('sul '+solution)
 //calc risk
 var sum = 0;
 for (let i = 0; i < solution.length; i++) {
-    sum += parseInt(solution[i]);
+    sum += parseInt(solution[i])-1;
 }
 var risk = Math.round(sum/48*100);
 document.querySelector('.percentage').innerHTML = risk+'%';
 
-// console.log('sum '+sum);
-// console.log('% '+risk)
 createCookie('points',sum);
 createCookie('percentage', risk);
 

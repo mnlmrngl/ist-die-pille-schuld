@@ -22,7 +22,7 @@ if (readCookie('disclaimerAccepted') == 'true') {
     if (readCookie('currentQuestion') == 'result' || readCookie('currentQuestion') == 'resultFull') {
         continueBtn.innerHTML = 'Zurück zur Auswerung'
     }
-    
+
     //remove start buttons
     start.style.display = 'none';
     document.querySelector('label').style.display = 'none'
@@ -39,4 +39,5 @@ if (readCookie('disclaimerAccepted') == 'true') {
         else
             document.location = '/'
     });
-}
+} else
+    document.getElementById('restart').style.display = 'none'
