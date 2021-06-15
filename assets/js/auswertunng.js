@@ -11,7 +11,8 @@ for (var i = 0; i < cookieArray.length; i++) {
     while (cookieElement.charAt(0) === ' ') {
         cookieElement = cookieElement.substring(1);
     }
-    if (cookieElement.indexOf('disclaimerAccepted') == -1 && cookieElement.indexOf('currentQuestion') == -1) {
+    console.log('cooie elem '+cookieElement)
+    if (cookieElement.indexOf('a')  == 0) {
         if (i < 10) {
             var start = 'a0' + i + '=';
         } else
@@ -19,13 +20,21 @@ for (var i = 0; i < cookieArray.length; i++) {
         solution.push(cookieElement.substring(start.length, cookieElement.length))
     }
 }
+
+console.log('sul '+solution)
 //calc risk
 var sum = 0;
 for (let i = 0; i < solution.length; i++) {
     sum += parseInt(solution[i]);
 }
 var risk = Math.round(sum/48*100);
-document.getElementById('percentage').innerHTML = risk+'%';
+document.querySelector('.percentage').innerHTML = risk+'%';
+
+// console.log('sum '+sum);
+// console.log('% '+risk)
+createCookie('points',sum);
+createCookie('percentage', risk);
+
 
 //stores question numers of no-goes
 var noGoes = [];
@@ -37,6 +46,7 @@ for (let i = 0; i < solution.length; i++) {
             noGoes.push(i + 1);
     }
 }
+
 
 //Show No Goes
 for (let i = 0; i < noGoes.length; i++) {
