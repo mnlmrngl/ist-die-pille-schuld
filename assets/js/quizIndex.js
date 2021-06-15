@@ -1,40 +1,22 @@
 //Check if disclaimer is accepted
-if (readCookie('disclaimerAccepted') == 'true')
-    console.log("true")
-else {
-    console.log("false")
+if (readCookie('disclaimerAccepted') != 'true') {
     document.location = '/disclaimer';
 }
 
-
-function readCookie(object) {
-    var element = object + '=';
-    var cookieArray = document.cookie.split(';');
-
-    for (var i = 0; i < cookieArray.length; i++) {
-        var cookieElement = cookieArray[i];
-        while (cookieElement.charAt(0) === ' ') {
-            cookieElement = cookieElement.substring(1);
-        }
-        if (cookieElement.indexOf(element) === 0) {
-            return cookieElement.substring(element.length, cookieElement.length);
-        }
-    }
-}
-
-
 var activeQuestion;
 var activeQuestionNumber;
+var backBtn;
+var nextBtn;
+
 //Check if user has paused quiz by reading disclaimer
 if (readCookie('currentQuestion') == null) {
     //new start
     activeQuestion = document.querySelector("[data-number='1']");
     activeQuestionNumber = activeQuestion.dataset.number;
-}else if(readCookie('currentQuestion') == 'result'){
-    document.location = '../results'
+} else if (readCookie('currentQuestion') == 'result') {
+    document.location = '/results'
 } else {
     //continue from disclaimer
-    console.log('continue from disclaimer')
     activeQuestionNumber = readCookie('currentQuestion');
     activeQuestion = document.querySelector("[data-number='" + activeQuestionNumber + "'");
 
@@ -48,7 +30,7 @@ if (readCookie('currentQuestion') == null) {
         while (cookieElement.charAt(0) === ' ') {
             cookieElement = cookieElement.substring(1);
         }
-        if (cookieElement.indexOf('disclaimerAccepted') == -1 && cookieElement.indexOf('currentQuestion') == -1 ) {
+        if (cookieElement.indexOf('disclaimerAccepted') == -1 && cookieElement.indexOf('currentQuestion') == -1) {
             if (i < 10) {
                 var start = 'a0' + i + '=';
             } else
@@ -64,10 +46,12 @@ if (readCookie('currentQuestion') == null) {
 
 activeQuestion.classList.add('question--active')
 document.getElementById("question__num").textContent = activeQuestionNumber;
-var activeQuestionButtonNext = document.querySelector('.question__next');
+nextBtn = document.querySelector('.question__next');
+backBtn = document.getElementById('back');
+
 
 //Next Question
-document.querySelector('.question__next').addEventListener('click', function () {
+nextBtn.addEventListener('click', function () {
     if (activeQuestion.dataset.number <= 12) {
         activeQuestion.classList.remove('question--active');
 
@@ -78,8 +62,20 @@ document.querySelector('.question__next').addEventListener('click', function () 
 
         activeQuestionNumber = activeQuestion.dataset.number;
         document.getElementById("question__num").textContent = activeQuestionNumber;
+
+
+        if (activeQuestionNumber > 1) {
+            backBtn.style.display = 'flex'
+            if (activeQuestionNumber == 13)
+                nextBtn.style.display = 'none';
+            if (activeQuestionNumber == 13) {
+                document.getElementById('controls').style.display = 'none'
+            }
+        }
+
     }
 });
+
 
 //Prev Question
 document.getElementById('back').addEventListener('click', function () {
@@ -92,16 +88,29 @@ document.getElementById('back').addEventListener('click', function () {
         activeQuestionNumber = activeQuestion.dataset.number;
         document.getElementById("question__num").textContent = activeQuestionNumber;
     }
+    if (activeQuestionNumber < 12) {
+        nextBtn.style.display = 'flex'
+        if (activeQuestionNumber == 1)
+            backBtn.style.display = 'none';
+    }
 });
 
-function createCookie(cookieName, cookieValue) {
-    document.cookie = cookieName + '=' + cookieValue + '; path=/;';
-}
+if (activeQuestionNumber == 1)
+    backBtn.style.display = 'none';
+else if (activeQuestionNumber == 13)
+    nextBtn.style.display == 'none'
 
 //Cookies mit Lösungen setzen
 document.getElementById('getSolution').addEventListener('click', function () {
     setResultCookies();
-    document.location = '../results';
+    document.location = '/results';
+});
+
+//Go to Disclaimer
+var disclaimer = document.getElementById('disclaimer')
+disclaimer.addEventListener('click', function () {
+    createCookie('currentQuestion', activeQuestionNumber);
+    setResultCookies();
 });
 
 function setResultCookies() {
@@ -115,10 +124,3 @@ function setResultCookies() {
             createCookie('a' + (i + 1), inputValues[i].value);
     }
 }
-
-//Go to Disclaimer
-var disclaimer = document.getElementById('disclaimer')
-disclaimer.addEventListener('click', function () {
-    createCookie('currentQuestion', activeQuestionNumber);
-    setResultCookies();
-})
