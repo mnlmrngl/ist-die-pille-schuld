@@ -1,6 +1,6 @@
 //Check if disclaimer is accepted
 if (readCookie('disclaimerAccepted') != 'true') {
-    document.location = '/disclaimer/index.html';
+    document.location = 'disclaimer';
 }
 
 var activeQuestion;
