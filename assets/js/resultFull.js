@@ -26,7 +26,6 @@ for (var i = 0; i < cookieArray.length; i++) {
 
 
 for (let i = 0; i < itemPointPlaceces.length; i++) {
-    console.log(itemPointPlaceces.length)
     itemPointPlaceces[i].innerHTML = solution[i] - 1 + '/3';
     itemPointPlaceces[i].nextElementSibling.innerHTML = getExplenation(solution[i]-1)
 }
@@ -36,7 +35,7 @@ function getExplenation(risk) {
     if (risk == 0)
         return ' - du gehst das Risiko auf keinen Fall ein';
     else if (risk == 1)
-        return ' - du gehst das Risiko ein bisschen ein';
+        return ' - du gehst das Risiko ungern ein';
     else if (risk == 2)
         return ' - du gehst das Risiko eher ein';
     else if (risk == 3)
