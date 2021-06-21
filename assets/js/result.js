@@ -70,7 +70,7 @@ for (let i = 0; i < noGoes.length; i++) {
     } else if (noGoes[i] == 7) {
         span.setAttribute('data-sideeffect', 'Ausfallende Monatsblutung')
     } else if (noGoes[i] == 8) {
-        span.setAttribute('data-sideeffect', 'Schmerzende Brunst')
+        span.setAttribute('data-sideeffect', 'Schmerzende Brust')
     } else if (noGoes[i] == 9) {
         span.setAttribute('data-sideeffect', 'Wassereinlagerungen')
     } else if (noGoes[i] == 10) {
