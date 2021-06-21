@@ -11,8 +11,8 @@ for (var i = 0; i < cookieArray.length; i++) {
     while (cookieElement.charAt(0) === ' ') {
         cookieElement = cookieElement.substring(1);
     }
-    console.log('cooie elem '+cookieElement)
-    if (cookieElement.indexOf('a')  == 0) {
+    // console.log('cooie elem ' + cookieElement)
+    if (cookieElement.indexOf('a') == 0) {
         if (i < 10) {
             var start = 'a0' + i + '=';
         } else
@@ -21,28 +21,45 @@ for (var i = 0; i < cookieArray.length; i++) {
     }
 }
 
-console.log('sul '+solution)
 //calc risk
 var sum = 0;
 for (let i = 0; i < solution.length; i++) {
-    sum += parseInt(solution[i])-1;
+    sum += parseInt(solution[i]) - 1;
 }
-var risk = Math.round(sum/36*100);
-document.querySelector('.percentage').innerHTML = risk+'%';
+var risk = Math.round(sum / 36 * 100);
+document.querySelector('.percentage').innerHTML = risk + '%';
 
-createCookie('points',sum);
+createCookie('points', sum);
 createCookie('percentage', risk);
 
 
 //stores question numers of no-goes
 var noGoes = [];
 for (let i = 0; i < solution.length; i++) {
-    if (solution[i] == 4) {
+    if (solution[i] == 1) {
         if (i + 1 < 10) {
             noGoes.push('0' + (i + 1));
         } else
             noGoes.push(i + 1);
     }
+}
+if (noGoes.length == 0) {
+    for (let i = 0; i < solution.length; i++) {
+        if (solution[i] == 2) {
+            if (i + 1 < 10) {
+                noGoes.push('0' + (i + 1));
+            } else
+                noGoes.push(i + 1);
+        }
+    }
+    var type = document.querySelectorAll('.type')
+    type[0].innerHTML = 'eher ein';
+    type[1].innerHTML = 'eher'
+    type[2].innerHTML = 'wahrscheinlich nicht'
+}
+if (noGoes.length == 0) {
+    document.getElementById('result-dynamic-p').innerHTML = 'Für dich sind keine der Nebenwirkungen ein wirkliches No-Go. Dennoch führt die Pille bei dir vermutlich auch zu Nebenwirkungen. Schau dir doch mal die Nebenwirkungen im Detail an und denke darüber nach, ob dir diese es wirklich wert sind.';
+    document.getElementById('last-p').style.display = 'none';
 }
 
 
@@ -88,8 +105,7 @@ disclaimer.addEventListener('click', function () {
     goToDisclaimer();
 })
 
-function goToDisclaimer(){
+function goToDisclaimer() {
     createCookie('currentQuestion', 'result');
     document.location = '/disclaimer'
 }
-
