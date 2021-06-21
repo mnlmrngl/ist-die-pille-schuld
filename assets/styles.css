@@ -324,6 +324,7 @@ input[type=range]::-ms-fill-lower {
 .sideeffect__desc p {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
 }
 .sideeffect__desc p:first-child {
     font-weight: 600;
@@ -392,6 +393,7 @@ input[type=range]::-ms-fill-lower {
 }
 .dark footer a {
     color: rgb(240, 240, 240);
+    cursor: pointer;
 }
 .dark input[type="checkbox"]:checked::before {
     box-shadow: inset 0px 0px 0px 3px rgb(20, 20, 20);
