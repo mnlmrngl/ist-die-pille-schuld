@@ -111,7 +111,7 @@ else if (activeQuestionNumber == 13)
 //Cookies mit Lösungen setzen
 document.getElementById('getSolution').addEventListener('click', function () {
     setResultCookies();
-    document.location = 'results/pre.html';
+    document.location = 'results/';
 });
 
 //Go to Disclaimer
