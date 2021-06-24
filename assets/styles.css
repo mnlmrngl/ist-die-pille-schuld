@@ -272,6 +272,19 @@ input[type=range]::-ms-track {
 input[type=range]::-ms-fill-lower {
     background: #699ae4;
 }
+#dummySpan{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+}
+#dummyThumb{
+    border: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 0;
+    background: #699ae4;
+    margin-top: -20px;
+}
 
 #result {
     line-height: 1.6;
