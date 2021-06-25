@@ -11,6 +11,8 @@ var backBtn;
 var nextBtn;
 var inputSliders = document.querySelectorAll("input[type='range']");
 
+var sliderClicked = [];
+
 
 
 //Check if user has paused quiz by reading disclaimer
@@ -19,7 +21,7 @@ if (readCookie('currentQuestion') == null) {
     activeQuestion = document.querySelector("[data-number='1']");
     activeQuestionNumber = activeQuestion.dataset.number;
     for (let i = 0; i < inputSliders.length; i++) {
-        inputSliders[i].value = Math.round(Math.random()*5);
+        inputSliders[i].value = Math.round(Math.random() * 5);
     }
 } else if (readCookie('currentQuestion') == 'result') {
     document.location = 'results'
@@ -50,6 +52,24 @@ if (readCookie('currentQuestion') == null) {
     for (let i = 0; i < inputSliders.length; i++) {
         inputSliders[i].value = solution[i];
     }
+
+    // hide dummy thumbs
+    // for (let i = 1; i < activeQuestionNumber; i++) {
+    //     hideDummyThumb(slider.dataset.slidernumber)
+    // }
+
+    // console.log(inputSliders[activeQuestionNumber-1].dataset.slidernumber);
+    // hideDummyThumb(document.querySelector('input[type="range"][data-slidernumber="3"]'));
+    // while (inputSliders[activeQuestionNumber-1].dataset.slidernumber < activeQuestionNumber) {
+    //     // hideDummyThumb(document.querySelector('input[type="range"][data-slidernumber="'+slidernumber+'"]'));
+    //     hideDummyThumb(document.querySelector('input[type="range"][data-slidernumber="3"]'));
+
+    // }
+
+    for (let i = 1; i <= activeQuestionNumber; i++) {
+        hideDummyThumb(document.querySelector('input[type="range"][data-slidernumber="' + i + '"]'));
+        showRealThumb(i)
+    }
 }
 
 activeQuestion.classList.add('question--active')
@@ -57,30 +77,40 @@ document.getElementById("question__num").textContent = activeQuestionNumber;
 nextBtn = document.querySelector('.question__next');
 backBtn = document.getElementById('back');
 
-
+var alreadyCLicked = false
 //Next Question
 nextBtn.addEventListener('click', function () {
-    if (activeQuestion.dataset.number <= 12) {
-        activeQuestion.classList.remove('question--active');
+    if (sliderClicked.includes(activeQuestionNumber)) {
+        if (activeQuestion.dataset.number <= 12) {
+            activeQuestion.classList.remove('question--active');
 
-        //new Active Question
+            //new Active Question
 
-        activeQuestion = activeQuestion.nextElementSibling;
-        activeQuestion.classList.add('question--active');
+            activeQuestion = activeQuestion.nextElementSibling;
+            activeQuestion.classList.add('question--active');
 
-        activeQuestionNumber = activeQuestion.dataset.number;
-        document.getElementById("question__num").textContent = activeQuestionNumber;
+            activeQuestionNumber = activeQuestion.dataset.number;
+            document.getElementById("question__num").textContent = activeQuestionNumber;
 
 
-        if (activeQuestionNumber > 1) {
-            backBtn.style.display = 'flex'
-            if (activeQuestionNumber == 13)
-                nextBtn.style.display = 'none';
-            if (activeQuestionNumber == 13) {
-                document.getElementById('controls').style.display = 'none'
+            if (activeQuestionNumber > 1) {
+                backBtn.style.display = 'flex'
+                if (activeQuestionNumber == 13)
+                    nextBtn.style.display = 'none';
+                if (activeQuestionNumber == 13) {
+                    document.getElementById('controls').style.display = 'none'
+                }
             }
-        }
 
+        }
+        document.querySelector('p.error').classList.remove('error')
+        alreadyCLicked = false
+    } else if(!alreadyCLicked){
+        var node = document.createElement("p"); 
+        node.classList.add('error') 
+        document.querySelector("input[type='range'][data-slidernumber='" + activeQuestionNumber + "']").parentElement.appendChild(node) ;
+        console.log(alreadyCLicked)
+        alreadyCLicked = true
     }
 });
 
@@ -119,6 +149,7 @@ var disclaimer = document.getElementById('disclaimer')
 disclaimer.addEventListener('click', function () {
     createCookie('currentQuestion', activeQuestionNumber);
     setResultCookies();
+    document.querySelector('[data="test"]').innerHTML = "input[type='range'][data-slidernumber='" + slidernumber + "']::-webkit-slider-thumb { }";
 });
 
 function setResultCookies() {
@@ -131,4 +162,23 @@ function setResultCookies() {
         } else
             createCookie('a' + (i + 1), inputValues[i].value);
     }
+}
+
+
+
+
+function firstSliderClick(slider) {
+    //dummy
+    hideDummyThumb(slider)
+    //show real thumb
+    showRealThumb(slider.dataset.slidernumber)
+    sliderClicked.push(slider.dataset.slidernumber);
+}
+
+function showRealThumb(slidernumber) {
+    document.querySelector('[data="test"]').innerHTML += "input[type='range'][data-slidernumber='" + slidernumber + "']::-webkit-slider-thumb { visibility: visible; }";
+}
+
+function hideDummyThumb(slider) {
+    slider.nextElementSibling.style.display = 'none';
 }
