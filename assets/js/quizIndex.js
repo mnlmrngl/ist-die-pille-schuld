@@ -103,12 +103,13 @@ nextBtn.addEventListener('click', function () {
             }
 
         }
-        document.querySelector('p.error').classList.remove('error')
+        if (document.body.contains(document.querySelector('p.error')))
+            document.querySelector('p.error').classList.remove('error')
         alreadyCLicked = false
-    } else if(!alreadyCLicked){
-        var node = document.createElement("p"); 
-        node.classList.add('error') 
-        document.querySelector("input[type='range'][data-slidernumber='" + activeQuestionNumber + "']").parentElement.appendChild(node) ;
+    } else if (!alreadyCLicked) {
+        var node = document.createElement("p");
+        node.classList.add('error')
+        document.querySelector("input[type='range'][data-slidernumber='" + activeQuestionNumber + "']").parentElement.appendChild(node);
         console.log(alreadyCLicked)
         alreadyCLicked = true
     }
@@ -168,17 +169,40 @@ function setResultCookies() {
 
 
 function firstSliderClick(slider) {
+    console.log(slider)
     //dummy
     hideDummyThumb(slider)
     //show real thumb
     showRealThumb(slider.dataset.slidernumber)
     sliderClicked.push(slider.dataset.slidernumber);
+    slider.removeAttribute('onclick');
+    slider.nextElementSibling.nextElementSibling.removeAttribute('onclick');
+    slider.parentElement.removeAttribute('onclick')
 }
 
 function showRealThumb(slidernumber) {
     document.querySelector('[data="test"]').innerHTML += "input[type='range'][data-slidernumber='" + slidernumber + "']::-webkit-slider-thumb { visibility: visible; }";
+
 }
 
 function hideDummyThumb(slider) {
     slider.nextElementSibling.style.display = 'none';
+}
+
+
+
+function selectOne(label) {
+    label.parentElement.parentElement.firstElementChild.value = 1;
+}
+
+function selectTwo(label) {
+    label.parentElement.parentElement.firstElementChild.value = 2;
+}
+
+function selectThree(label) {
+    label.parentElement.parentElement.firstElementChild.value = 3;
+}
+
+function selectFour(label) {
+    label.parentElement.parentElement.firstElementChild.value = 4;
 }

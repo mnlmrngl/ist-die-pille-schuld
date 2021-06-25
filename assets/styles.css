@@ -222,6 +222,10 @@ footer li {
     left: -10%;
     max-width: 115%;
 }
+
+.options li{
+    cursor: pointer;
+}
 input[type=range]::-moz-range-thumb {
     width: 15px;
     height: 15px;
