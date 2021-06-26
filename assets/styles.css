@@ -294,35 +294,39 @@ input[type=range]::-ms-fill-lower {
     margin-top: -20px;
 }
 .overlayOne{
-    height: 36px;
+    height: 40px;
     width: 15%;
     /* background: red; */
     position: relative;
-    margin-top: -36px;
+    margin-top: -40px;
+    cursor: pointer;
 }
 .overlayTwo{
-    height: 36px;
+    height: 40px;
     width: 27.5%;
     /* background: blue; */
     position: relative;
-    margin-top: -36px;
+    margin-top: -40px;
     margin-left: 15%;
+    cursor: pointer;
 }
 .overlayThree{
-    height: 36px;
+    height: 40px;
     width: 33%;
     /* background: yellow; */
     position: relative;
-    margin-top: -36px;
+    margin-top: -40px;
     margin-left: 42.5%;
+    cursor: pointer;
 }
 .overlayFour{
-    height: 36px;
+    height: 40px;
     width: 27.5%;
     /* background: rgb(250, 255, 250); */
     position: relative;
-    margin-top: -36px;
+    margin-top: -40px;
     margin-left: 75.5%;
+    cursor: pointer;
 }
 
 

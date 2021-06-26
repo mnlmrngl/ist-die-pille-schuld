@@ -168,18 +168,6 @@ function setResultCookies() {
 
 
 
-function firstSliderClick(slider) {
-    console.log(slider)
-    //dummy
-    hideDummyThumb(slider)
-    //show real thumb
-    showRealThumb(slider.dataset.slidernumber)
-    sliderClicked.push(slider.dataset.slidernumber);
-    slider.removeAttribute('onclick');
-    slider.nextElementSibling.nextElementSibling.removeAttribute('onclick');
-    slider.parentElement.removeAttribute('onclick')
-}
-
 function showRealThumb(slidernumber) {
     document.querySelector('[data="test"]').innerHTML += "input[type='range'][data-slidernumber='" + slidernumber + "']::-webkit-slider-thumb { visibility: visible; }";
 
@@ -188,9 +176,6 @@ function showRealThumb(slidernumber) {
 function hideDummyThumb(slider) {
     slider.nextElementSibling.style.display = 'none';
 }
-
-
-
 
 
 
@@ -220,9 +205,10 @@ slider.value = overlay.dataset.overlaynumber
 console.log(overlay.dataset.overlaynumber)
  
  //remove overlays
- slider.nextElementSibling.nextElementSibling.style.display = 'none'
- slider.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
- slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
- slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
+//  slider.nextElementSibling.nextElementSibling.style.display = 'none'
+//  slider.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
+//  slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
+//  slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
 
+ sliderClicked.push(slider.dataset.slidernumber);
 }
