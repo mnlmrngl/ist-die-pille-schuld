@@ -191,6 +191,9 @@ function hideDummyThumb(slider) {
 
 
 
+
+
+
 function selectOne(label) {
     label.parentElement.parentElement.firstElementChild.value = 1;
 }
@@ -205,4 +208,21 @@ function selectThree(label) {
 
 function selectFour(label) {
     label.parentElement.parentElement.firstElementChild.value = 4;
+}
+
+
+function firstSliderClick2(overlay) {
+ var slider = overlay.parentElement.firstElementChild;
+ hideDummyThumb(slider)
+ showRealThumb(slider.dataset.slidernumber)
+
+slider.value = overlay.dataset.overlaynumber
+console.log(overlay.dataset.overlaynumber)
+ 
+ //remove overlays
+ slider.nextElementSibling.nextElementSibling.style.display = 'none'
+ slider.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
+ slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
+ slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
+
 }
