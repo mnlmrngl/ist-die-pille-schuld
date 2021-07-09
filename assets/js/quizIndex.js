@@ -21,7 +21,7 @@ if (readCookie('currentQuestion') == null) {
     activeQuestion = document.querySelector("[data-number='1']");
     activeQuestionNumber = activeQuestion.dataset.number;
     for (let i = 0; i < inputSliders.length; i++) {
-        inputSliders[i].value = Math.round(Math.random() * 5);
+        inputSliders[i].value = 1;
     }
 } else if (readCookie('currentQuestion') == 'result') {
     document.location = 'results'
@@ -170,6 +170,7 @@ function setResultCookies() {
 
 function showRealThumb(slidernumber) {
     document.querySelector('[data="test"]').innerHTML += "input[type='range'][data-slidernumber='" + slidernumber + "']::-webkit-slider-thumb { visibility: visible; }";
+    document.querySelector('[data="test"]').innerHTML += "input[type='range'][data-slidernumber='" + slidernumber + "']::-moz-range-thumb { visibility: visible; }";
 
 }
 
