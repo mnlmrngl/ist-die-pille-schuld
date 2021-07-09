@@ -205,10 +205,10 @@ slider.value = overlay.dataset.overlaynumber
 console.log(overlay.dataset.overlaynumber)
  
  //remove overlays
-//  slider.nextElementSibling.nextElementSibling.style.display = 'none'
-//  slider.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
-//  slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
-//  slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
+ slider.nextElementSibling.nextElementSibling.style.display = 'none'
+ slider.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
+ slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
+ slider.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none'
 
  sliderClicked.push(slider.dataset.slidernumber);
 }
